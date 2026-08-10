@@ -24,6 +24,8 @@ log_level = 2
 warn_on_root = 1
 
 [app:android]
+android.accept_sdk_license = True
+
 # Izin yang dibutuhkan: kamera + akses penyimpanan (untuk ambil/pilih foto)
 android.permissions = CAMERA,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE
 
