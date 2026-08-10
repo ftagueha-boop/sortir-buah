@@ -3,18 +3,17 @@ name: Build APK
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
-    steps:
-      - uses: actions/checkout@v4
+    name: Build Android APK
+    runs-on: ubuntu-latest
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Build APK with Buildozer
         uses: ArtemSBulgakov/buildozer-action@v1
@@ -23,8 +22,8 @@ jobs:
           workdir: .
           buildozer_version: stable
 
-      - name: Upload APK artifact
+      - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: sortir-buah-apk
-          path: bin/*.apk
+          path: ${{ steps.buildozer.outputs.filename }}
