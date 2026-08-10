@@ -1,0 +1,4 @@
+Akurasi model: 98.96%
+Jumlah data latih: 1920
+Jumlah data uji: 480
+Algoritma: Logistic Regression (multinomial / softmax)
